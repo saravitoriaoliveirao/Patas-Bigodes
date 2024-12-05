@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cães</title>
+    <link rel="stylesheet" href="./css/animais.css">
+</head>
+<body>
+  <div>
+    <nav class="menu">
+      <ul>
+        <div class="volte">
+          <a href="index.html">
+          <img class="gato" src="./imagens/f7ddaa73-d1ff-4b2a-9bc5-d6c07c496138-removebg-preview.png"></img></a> 
+        </div>
+
+        <div class="search-container">
+          <input 
+            type="text" 
+            class="search-box" 
+            id="searchInput" 
+            placeholder="Digite sua pesquisa aqui...">
+          <button 
+            class="search-button" 
+            onclick="performSearch()">Buscar</button>
+        </div>
+        <div class="img">
+          <a href="zapp.html">
+        <img class="zapp" src="Imagens/8128670-veterinaria-medicina-hospitalar-ou-petshop-para-animais-vetor-removebg-preview.png">
+          </a>
+
+        <img class="perfil" src ="imagens/perfil.jpg"></img>
+        </div>
+      </ul>
+    </nav>    
+  </div>
+  
+  <main class="main">
+    <section class="main1">
+      <aside>
+        <h1>Produtos para cães</h1>
+        <h2><a href="cat.html" style="text-decoration: none; color: #fff9e6;">Produtos para gatos</a></h2>
+        <h2><a href="aves.html" style="text-decoration: none; color: #fff9e6;">Produtos para pássaros</a></h2>
+        <h2><a href="rato.html" style="text-decoration: none; color: #fff9e6;">Produtos para roedores</a></h2>
+        <h2><a href="index.html" style="text-decoration: none; color: #8897aa;">Voltar para a página inicial</a></h2>
+      </aside>
+    
+      <div class="cart">
+          <h2>Carrinho de Compras</h2>
+          <div id="cart-items"></div>
+          <button onclick="checkout()">Finalizar Compra</button>
+        </div>
+      
+        <script>
+          const cart = [];
+      
+          function addToCart(name, price) {
+            const cartItems = document.getElementById('cart-items');
+            cart.push({ name, price });
+      
+            renderCart();
+          }
+      
+          function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+      
+            let total = 0;
+      
+            cart.forEach((item, index) => {
+              total += item.price;
+      
+              const div = document.createElement('div');
+              div.className = 'cart-item';
+              div.innerHTML = `
+                <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+                <button onclick="removeFromCart(${index})">Remover</button>
+              `;
+              cartItems.appendChild(div);
+            });
+      
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'cart-total';
+            totalDiv.innerHTML = `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+            cartItems.appendChild(totalDiv);
+          }
+      
+          function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+          }
+      
+          function checkout() {
+            if (cart.length === 0) {
+              alert('Seu carrinho está vazio!');
+            } else {
+              alert('Compra finalizada com sucesso!');
+              cart.length = 0;
+              renderCart();
+            }
+          }
+        </script>
+    </section> 
+    <section class="main2">   
+      <div class="card-container">
+          <div class="card">
+                  <img src="./imagens/3748856-pacote-de-racao-para-cachorro-gratis-vetor (1).jpg" alt="Imagem do Card">
+              <div class="content">
+                  <h3>Dog Food</h3>
+                  <h3 class="preco">R$ 86,90</h3>
+                  <p>Dog Food Nutrição Essencial Carne Para Cães Adultos 10.1kg</p>
+                  <button onclick="addToCart('Ração', 86.90)">Adicionar ao carrinho</button>
+              </div>
+          </div>  
+          <div class="card">
+                  <img src="./imagens/casinha-de-cachorro-em-estilo-cartoon_1308-118892.avif" alt="Imagem do Card">
+              <div class="content">
+                  <h3>Lar para Cachorros</h3>
+                  <h3 class="preco">R$ 334,90</h3>
+                  <p>Casinha de Cachorro Média.</p>
+                  <button onclick="addToCart('Ração', 334.90)">Adicionar ao carrinho</button>
+              </div>
+          </div>  
+          <div class="card">
+                  <img src="./imagens/7396156-uma-coleira-para-gatos-e-cachorros-com-um-pingente-cor-isolada-ilustracao-estilo-de-desenho-animado-vetor.jpg" alt="Imagem do Card">
+              <div class="content">
+                  <h3>Guia Dog</h3>
+                  <h3 class="preco">R$ 30,90</h3>
+                  <p>Coleira Nylon Dupla Pet Cachorros Raças Medias Fita 3 cm (35 a 55 cm, Azul).</p>
+                  <button onclick="addToCart('Ração', 30.90)">Adicionar ao carrinho</button>
+              </div>
+          </div>  
+          <div class="card">
+                  <img src="./imagens/4239819-pet-s-clothes-color-icon-dog-apparel-isolated-vector-illustration-vetor.jpg" alt="Imagem do Card">
+              <div class="content">
+                  <h3>Estilo Au Au</h3>
+                  <h3 class="preco">R$ 44,70</h3>
+                  <p>Roupa para cachorro de tamanho médio, com estampa de osso e 100% Algodão.</p>
+                  <button onclick="addToCart('Ração', 44.70)">Adicionar ao carrinho</button>
+              </div>
+          </div> 
+          <div class="card">
+                  <img src="./imagens/8276920-cao-s-bola-com-pata-cor-icone-animal-de-brinquedo-ilustracao-isolada-vetor.jpg" alt="Imagem do Card">
+              <div class="content">
+                  <h3>Joy Pets</h3>
+                  <h3 class="preco">R$ 6,99</h3>
+                  <p>Bolinha de borracha para cachorros azul.</p>
+                  <button onclick="addToCart('Ração', 6.99)">Adicionar ao carrinho</button>
+              </div>
+          </div> 
+      </div>
+    </section> 
+   </main> 
+
+
+</body>
+</html>

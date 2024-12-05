@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <div>
+    <nav class="menu">
+      <ul>
+        
+        <img class="gato" src="./imagens/f7ddaa73-d1ff-4b2a-9bc5-d6c07c496138-removebg-preview.png"></img>
+
+        <div class="search-container">
+          <input 
+            type="text" 
+            class="search-box" 
+            id="searchInput" 
+            placeholder="Digite sua pesquisa aqui...">
+          <button 
+            class="search-button" 
+            onclick="performSearch()">Buscar</button>
+        </div>
+        <div class="img">
+          <a href="zapp.html">
+        <img class="zapp" src="Imagens/8128670-veterinaria-medicina-hospitalar-ou-petshop-para-animais-vetor-removebg-preview.png">
+          </a>
+
+        <img class="perfil" src ="imagens/perfil.jpg"></img>
+        </div>
+      </ul>
+    </nav>    
+  </div>
+  
+  <container>
+    <main>
+      <div class="botoes">
+      <a href="dog.html">
+        <img class="cachorro" src="Imagens/dog.jpg"></img>
+      </a>
+      <a href="cat.html">
+        <img class="cat" src="Imagens/gato.jpg"></img>
+      </a>
+      <a href="aves.html">
+        <img class="passaros" src="Imagens/passaros.jpeg"></img>
+      </a>
+      <a href="rato.html"> 
+        <img class="roedores" src="Imagens/rato.jpg"></img>
+      </a>
+    </div>
+
+    </main>
+  </container>
+
+  <script>
+    function performSearch() {
+        const query = document.getElementById('searchInput').value.trim();
+        if (query) {
+            alert('Você pesquisou por: ' + query);
+                  } else {
+            alert('Por favor, insira um termo de pesquisa.');
+        }
+    }
+  </script>
+
+<div class="carousel">
+  <div class="carousel-imagens">
+      <img src="./imagens/cb48e807-0494-4c1b-ad8f-eb7582a21d99.jfif"Imagem 1">
+      <img src="./imagens/224d9f12-f78c-405e-843c-265339543c15.jpg" alt="Imagem 2">
+      <img src="./imagens/ilustracao-de-hotel-de-animais-de-estimacao_281155-296.avif" alt="Imagem 3">
+  </div>
+  <div class="carousel-botoes">
+      <button id="prev">&#10094; </button>
+      <button id="next"> &#10095;</button>
+  </div>
+</div>
+
+<script>
+  const imagesContainer = document.querySelector('.carousel-imagens');
+  const images = document.querySelectorAll('.carousel-imagens img');
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+      const width = images[0].clientWidth;
+      imagesContainer.style.transform = `translateX(-${currentIndex * width}px)`;
+  }
+
+  nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateCarousel();
+  });
+
+  prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+</script>
+</body>
+</html>

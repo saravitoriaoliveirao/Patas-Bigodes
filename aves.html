@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pássaros</title>
+    <link rel="stylesheet" href="./css/animais.css">
+</head>
+<body>
+  <div>
+    <nav class="menu">
+      <ul>
+        <div class="volte">
+          <a href="index.html">
+          <img class="gato" src="./imagens/f7ddaa73-d1ff-4b2a-9bc5-d6c07c496138-removebg-preview.png"></img></a> 
+        </div>
+
+        <div class="search-container">
+          <input 
+            type="text" 
+            class="search-box" 
+            id="searchInput" 
+            placeholder="Digite sua pesquisa aqui...">
+          <button 
+            class="search-button" 
+            onclick="performSearch()">Buscar</button>
+        </div>
+        <div class="img">
+          <a href="zapp.html">
+        <img class="zapp" src="Imagens/8128670-veterinaria-medicina-hospitalar-ou-petshop-para-animais-vetor-removebg-preview.png">
+          </a>
+
+        <img class="perfil" src ="imagens/perfil.jpg"></img>
+        </div>
+      </ul>
+    </nav>    
+  </div>
+  
+
+      <main class="main">
+        <section class="main1">
+          <aside>
+            <h2><a href="dog.html" style="text-decoration: none; color: #fff9e6;">Produtos para cães</a></h2>
+            <h2><a href="cat.html" style="text-decoration: none; color: #fff9e6;">Produtos para gatos</a></h2>
+            <h1>Produtos para pássaros</h1> 
+            <h2><a href="rato.html" style="text-decoration: none; color: #fff9e6;">Produtos para roedores</a></h2>
+            <h2><a href="index.html" style="text-decoration: none; color: #8897aa;">Voltar para a página inicial</a></h2>
+          </aside>
+        
+          <div class="cart">
+              <h2>Carrinho de Compras</h2>
+              <div id="cart-items"></div>
+              <button onclick="checkout()">Finalizar Compra</button>
+            </div>
+          
+            <script>
+                 const cart = [];
+          
+          function addToCart(name, price) {
+            const cartItems = document.getElementById('cart-items');
+            cart.push({ name, price });
+      
+            renderCart();
+          }
+      
+          function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+      
+            let total = 0;
+      
+            cart.forEach((item, index) => {
+              total += item.price;
+      
+              const div = document.createElement('div');
+              div.className = 'cart-item';
+              div.innerHTML = `
+                <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+                <button onclick="removeFromCart(${index})">Remover</button>
+              `;
+              cartItems.appendChild(div);
+            });
+      
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'cart-total';
+            totalDiv.innerHTML = `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+            cartItems.appendChild(totalDiv);
+          }
+      
+          function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+          }
+      
+          function checkout() {
+            if (cart.length === 0) {
+              alert('Seu carrinho está vazio!');
+            } else {
+              alert('Compra finalizada com sucesso!');
+              cart.length = 0;
+              renderCart();
+            }
+          }
+            </script>
+        </section> 
+        <section class="main2">   
+          <div class="card-container">
+              <div class="card">
+                      <img src="./imagens/pngtree-birdhouse-nesting-box-png-illustration-png-image_10158855.png" alt="Imagem do Card">
+                  <div class="content">
+                      <h3>Happy House</h3>
+                      <h3 class="preco">R$ 47,30</h3>
+                      <p>Casa de Pássaros de Madeira tingida com tinta azul e com decoração de flor .</p>
+                      <button onclick="addToCart('Ração', 47.3)">Adicionar ao carrinho</button>
+                  </div>
+              </div>  
+              <div class="card">
+                      <img src="./imagens/depositphotos_166968028-stock-illustration-parboiled-rice-in-wooden-bowl.jpg" alt="Imagem do Card">
+                  <div class="content">
+                      <h3>Pássaro com o bucho</h3>
+                      <h3 class="preco">R$ 17,90</h3>
+                      <p>Alpiste para passarinhos 500g.</p>
+                      <button onclick="addToCart('Ração', 17.90)">Adicionar ao carrinho</button>
+                  </div>
+              </div>  
+              <div class="card">
+                      <img src="./imagens/istockphoto-1292005885-612x612.jpg" alt="Imagem do Card">
+                  <div class="content">
+                      <h3>Lar doce Lar</h3>
+                      <h3 class="preco">R$ 67,00</h3>
+                      <p> Gaiola de metal para pássaros.</p>
+                      <button onclick="addToCart('Ração', 67)">Adicionar ao carrinho</button>
+                  </div>
+              </div>  
+              <div class="card">
+                      <img src="./imagens/depositphotos_132294848-stock-illustration-swing-with-blue-bird-standing.jpg" alt="Imagem do Card">
+                  <div class="content">
+                      <h3>Ave Divertida</h3>
+                      <h3 class="preco">R$ 16,50</h3>
+                      <p> Balanço de madeira para seu passarinho na gaiola se divertir muito ao longo do
+                      dia. </p>
+                      <button onclick="addToCart('Ração', 16.50)">Adicionar ao carrinho</button>
+                  </div>
+              </div> 
+              <div class="card">
+                      <img src="./imagens/pngtree-cartoon-chicken-feed-png-image_11177680.png" alt="Imagem do Card">
+                  <div class="content">
+                      <h3>Alimente bem sua Galinha</h3>
+                      <h3 class="preco">R$ 78,90</h3>
+                      <p>Ração para Frangos de Crescimento e Engorda Qualis com 5kg e 13% de proteína.</p>
+                      <button onclick="addToCart('Ração', 78.90)">Adicionar ao carrinho</button>
+                  </div>
+              </div> 
+          </div>
+        </section> 
+       </main> 
+
+
+</body>
+</html>
